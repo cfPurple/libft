@@ -18,10 +18,3 @@ void ft_bzero(void *s, size_t n)
 	while (n-- > 0)
 		*ptr++ = '\0';
 }
-
-int main()
-{
-	char s[] = "hfvhzfzf";
-	ft_bzero(s ,0);
-	printf ("%s" ,s);
-}
