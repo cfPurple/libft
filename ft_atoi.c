@@ -24,12 +24,12 @@ int ft_atoi(const char *str)
 	int	signe;
 
 	signe = 1;
-	str = skip_white_space(str);
+	str = skip_white_space((char *)str);
 	while (*str == '-' || *str == '+')
 	{
 		if (*str == '-')
 			signe = -signe;
 		str++;
 	}
-	return (signe * lil_atoi(str));
+	return (signe * lil_atoi((char*)str));
 }
