@@ -27,5 +27,7 @@ char	*ft_strrchr(const char *s, int c);
 int ft_tolower(int c);
 int ft_toupper(int c);
 void *ft_calloc(size_t count, size_t size);
+char	*ft_strdup(char *src);
+
 
 #endif
