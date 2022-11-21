@@ -1,55 +1,34 @@
 #include <stdlib.h>
 
-static int	occurrence(char c, char *charset)
-{
-	while (*charset)
-	{
-		if (*charset == c)
-			return (1);
-		charset++;
-	}
-	return (0);
-}
-
-static int	lenstr(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
-static int	comptemot(char *str, char *charset)
+static int	comptemot(char const *s, char c)
 {
 	int	nbr;
 	int	i;
 
 	nbr = 0;
 	i = 0;
-	while (str[i])
+	while (s[i])
 	{
-		while (occurrence(str[i], charset) && str[i])
+		while (c == s[i] && s[i])
 			i++;
-		if (occurrence(str[i], charset) == 0 && str[i])
+		if (c != s[i] && s[i])
 		{
 			nbr++;
-			while (occurrence(str[i], charset) == 0 && str[i])
+			while (c != s[i] && s[i])
 				i++;
 		}
 	}
 	return (nbr);
 }
 
-static int	comptelettre(char *str, char *charset)
+static int	comptelettre(char const *s, char c)
 {
 	int	nbr;
 	int	i;
 
 	i = 0;
 	nbr = 0;
-	while (occurrence(str[i], charset) == 0 && str[i] != 0)
+	while (c != s[i] && s[i])
 	{
 		nbr++;
 		i++;
@@ -60,28 +39,31 @@ static int	comptelettre(char *str, char *charset)
 char **ft_split(char const *s, char c)
 {
 	int		n;
+	char **tablito;
 	char	**tab;
 	int		i;
 	int		b;
-	char	**tablito;
 
 	n = 0;
 	b = 0;
-	tab = malloc(sizeof(char *) * (comptemot(str, charset) + 1));
-	while (*str)
+	if (!(tab= malloc(sizeof(char *) * (comptemot(s, c) + 1))))
+		return (NULL);
+	while (*s)
 	{
-		while (occurrence(*str, charset) && *str)
-			str++;
-		tab[n] = malloc(sizeof(char) * (comptelettre(str, charset) + 1));
+		while (c == *s && *s)
+			s++;
+		if (!(tab[n] = malloc(sizeof(char) * (comptelettre(s, c) + 1))))
+			return (NULL);
 		i = 0;
-		while (occurrence(*str, charset) == 0 && str[b] != 0)
+		while (c != *s && *s)
 		{
-			tab[n][i++] = *str;
-			str++;
+			tab[n][i++] = *s;
+			s++;
 		}
 		tab[n++][i] = '\0';
 	}
-	tab[n] = 0;
+	tab[n] = NULL;
 	tablito = tab;
-	return (tablito);
+	free(tab);
+	return (tab);
 }
