@@ -42,10 +42,8 @@ char **ft_split(char const *s, char c)
 	char **tablito;
 	char	**tab;
 	int		i;
-	int		b;
 
 	n = 0;
-	b = 0;
 	if (!(tab= malloc(sizeof(char *) * (comptemot(s, c) + 1))))
 		return (NULL);
 	while (*s)
@@ -65,5 +63,5 @@ char **ft_split(char const *s, char c)
 	tab[n] = NULL;
 	tablito = tab;
 	free(tab);
-	return (tab);
+	return (tablito);
 }
