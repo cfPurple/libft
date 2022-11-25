@@ -3,14 +3,19 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	int i;
+	char	*ptr;
+	int		i;
 
-	i = ft_strlen(s);
-	while (i >= 0)
+	i = 0;
+	ptr = NULL;
+	while (s[i])
 	{
 		if (s[i] == (char)c)
-			return ((char*)s + i);
-		i--;
+			ptr = &((char*)s)[i];
+		i++;
 	}
-	return (0);
+	if (c == '\0')
+		ptr = &((char*)s)[i];
+	return (ptr);
+
 }

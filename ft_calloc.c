@@ -11,12 +11,18 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <string.h>
 
 void	*ft_calloc(size_t count, size_t size)
 {
 	char	*tab;
 
 	if (count == 0 || size == 0)
+	{
+		tab = malloc(0);
+		return (tab);
+	}
+	if (count == SIZE_MAX && size == SIZE_MAX)
 		return (NULL);
 	tab = malloc(count * size);
 	if (tab == NULL)
