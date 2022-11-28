@@ -1,14 +1,10 @@
-#include "stdlib.h"
+#include "libft.h"
+#include <stdlib.h>
+
 static int isaset(char const *s1, char const *set)
 {
-	int t;
-
-	t = 0;
-	while(set[t++])
-	{
-		if (set[t] == *s1)
-			return (1);
-	}
+	if (set[0] == *s1 || set[ft_strlen(set) - 1] == *s1)
+		return (1);
 	return (0);
 }
 

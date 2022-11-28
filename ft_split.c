@@ -1,6 +1,7 @@
 #include <stdlib.h>
+#include "libft.h"
 
-static int	comptemot(char const *s, char c)
+static int	comptemot(char *s, char c)
 {
 	int	nbr;
 	int	i;
@@ -21,47 +22,46 @@ static int	comptemot(char const *s, char c)
 	return (nbr);
 }
 
-static int	comptelettre(char const *s, char c)
+static int	comptelettre(char *s, char c)
 {
-	int	nbr;
-	int	i;
+	int i;
 
 	i = 0;
-	nbr = 0;
 	while (c != s[i] && s[i])
 	{
-		nbr++;
 		i++;
 	}
-	return (nbr);
+	return (i);
 }
 
 char **ft_split(char const *s, char c)
 {
 	int		n;
-	char **tablito;
 	char	**tab;
 	int		i;
+	char *str;
 
 	n = 0;
-	if (!(tab= malloc(sizeof(char *) * (comptemot(s, c) + 1))))
+	str = (char *)s;
+	if (!str || !(tab = malloc(sizeof(char *) * (comptemot(str, c) + 1))))
 		return (NULL);
-	while (*s)
+	while (*str)
 	{
-		while (c == *s && *s)
-			s++;
-		if (!(tab[n] = malloc(sizeof(char) * (comptelettre(s, c) + 1))))
-			return (NULL);
-		i = 0;
-		while (c != *s && *s)
+		while (c == *str && *str)
+			str++;
+		if (c != *str && *str)
 		{
-			tab[n][i++] = *s;
-			s++;
+			if (!(tab[n] = malloc(sizeof(char) * (comptelettre(str, c) + 1))))
+				return (NULL);
+		}
+		i = 0;
+		while (c != *str && *str)
+		{
+			tab[n][i++] = *str;
+			str++;
 		}
 		tab[n++][i] = '\0';
 	}
 	tab[n] = NULL;
-	tablito = tab;
-	free(tab);
-	return (tablito);
+	return (tab);
 }
