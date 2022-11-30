@@ -27,7 +27,8 @@ char *ft_strtrim(char const *s1, char const *set)
 	char* tab;
 
 	i = 0;
-	if (!(tab = malloc(sizeof(char) * (sizetab(s1, set) + 1))))
+	tab = malloc(sizeof(char) * (sizetab(s1, set) + 1));
+	if (!tab)
 		return (NULL);
 	while (*s1)
 	{

@@ -17,5 +17,4 @@ char	*ft_strrchr(const char *s, int c)
 	if (c == '\0')
 		ptr = &((char*)s)[i];
 	return (ptr);
-
 }

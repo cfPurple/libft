@@ -43,7 +43,8 @@ char **ft_split(char const *s, char c)
 
 	n = 0;
 	str = (char *)s;
-	if (!str || !(tab = malloc(sizeof(char *) * (comptemot(str, c) + 1))))
+	tab = malloc(sizeof(char *) * (comptemot(str, c) + 1));
+	if (!str || !tab)
 		return (NULL);
 	while (*str)
 	{
@@ -51,7 +52,8 @@ char **ft_split(char const *s, char c)
 			str++;
 		if (c != *str && *str)
 		{
-			if (!(tab[n] = malloc(sizeof(char) * (comptelettre(str, c) + 1))))
+			tab[n] = malloc(sizeof(char) * (comptelettre(str, c) + 1));
+			if (!tab[n])
 				return (NULL);
 		}
 		i = 0;
