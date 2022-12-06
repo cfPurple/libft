@@ -5,7 +5,7 @@ t_list *ft_lstnew(void *content)
 {
 	t_list *tab;
 
-	tab = malloc(sizeof(t_list) * (unsigned long)content);
+	tab = malloc(sizeof(t_list));
 	if (tab == NULL)
 		return (NULL);
 	tab->content = content;

@@ -4,14 +4,16 @@
 char *ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char *tab;
-	int i;
+	size_t i;
+	size_t j;
 
 	i = 0;
+	j = 0;
 	if (!s)
 		return (NULL);
 	if (start > ft_strlen((char *)s))
 	{
-		tab = malloc(sizeof(char) * 1);
+		tab = malloc(sizeof(char));
 		if (!tab)
 			return (NULL);
 		tab[i] = '\0';
@@ -20,11 +22,14 @@ char *ft_substr(char const *s, unsigned int start, size_t len)
 	tab = malloc(sizeof(char) * (len + 1));
 	if (!tab)
 		return (NULL);
-	while (s[start] != '\0' && len > 0)
+	while (s[i])
 	{
-		tab[i++] = s[start++];
-		len--;
+		if (i >= start && j < len)
+		{
+			tab[j++] = s[i];
+		}
+		i++;
 	}
-	tab[i] = '\0';
+	tab[j] = '\0';
 	return (tab);
 }
