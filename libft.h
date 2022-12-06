@@ -6,7 +6,7 @@
 /*   By: cfelix <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 16:33:00 by cfelix            #+#    #+#             */
-/*   Updated: 2022/12/06 18:24:55 by cfelix           ###   ########.fr       */
+/*   Updated: 2022/12/06 20:37:28 by cfelix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 
 # include <string.h>
 # include <stdlib.h>
-
-# define SIZE_MAX	(18446744073709551615UL)
+# include <limits.h>
+# include <stdint.h>
 
 typedef struct s_list
 {

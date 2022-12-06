@@ -12,7 +12,7 @@
 
 #include <stdlib.h>
 
-static char	*malloctab(int nb)
+static char	*malloctab(long long nb)
 {
 	int		i;
 	char	*tab;
@@ -34,14 +34,12 @@ static char	*malloctab(int nb)
 	return (tab);
 }
 
-static void	lil_itoa(int nb, char **tab)
+static void	lil_itoa(long long ni, char **tab)
 {
 	long long	div;
-	long long	ni;
 	long long	i;
 
 	i = 0;
-	ni = nb;
 	if (ni < 0)
 	{
 		ni = -ni;
@@ -61,17 +59,20 @@ static void	lil_itoa(int nb, char **tab)
 
 char	*ft_itoa(int nb)
 {
-	char	*tab;
+	char		*tab;
+	long long	ni;
 
-	tab = malloctab(nb);
-	if (tab == NULL)
-		return (NULL);
-	if (nb == 0)
+	ni = nb;
+	if (ni == 0)
 	{
+		tab = malloc(sizeof(char) * 2);
 		tab[0] = '0';
 		tab[1] = '\0';
 		return (tab);
 	}
-	lil_itoa(nb, &tab);
+	tab = malloctab(ni);
+	if (tab == NULL)
+		return (NULL);
+	lil_itoa(ni, &tab);
 	return (tab);
 }

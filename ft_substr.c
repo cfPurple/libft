@@ -17,25 +17,19 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*tab;
 	size_t	i;
-	size_t	j;
 
 	i = 0;
-	j = 0;
 	if (!s)
 		return (NULL);
-	if (start > ft_strlen((char *)s))
-	{
-		tab = malloc(sizeof(char));
-		if (!tab)
-			return (NULL);
-		tab[i] = '\0';
-		return (tab);
-	}
+	if (start >= ft_strlen((char *)s))
+		return (ft_strdup(""));
+	if (ft_strlen(s) - start < len)
+		len = ft_strlen(s) - start;
 	tab = malloc(sizeof(char) * (len + 1));
 	if (!tab)
 		return (NULL);
 	while (s[start] && i < len)
 		tab[i++] = s[start++];
-	tab[j] = '\0';
+	tab[i] = '\0';
 	return (tab);
 }
