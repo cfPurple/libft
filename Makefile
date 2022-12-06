@@ -18,7 +18,7 @@ bonus: $(OBJB)
 %.o: %.c
 		gcc -I. -o $@ -c $? $(CFLAGS)
 
-all: $(NAME)
+all: $(NAME) 
 
 clean:
 		rm -f $(OBJ) $(OBJB)

@@ -34,22 +34,18 @@ static int	comptelettre(char *s, char c)
 	return (i);
 }
 
-char **ft_split(char const *s, char c)
+static char **writetab(char **tab, char *str, char c)
 {
 	int		n;
-	char	**tab;
 	int		i;
-	char *str;
 
 	n = 0;
-	str = (char *)s;
-	tab = malloc(sizeof(char *) * (comptemot(str, c) + 1));
-	if (!str || !tab)
-		return (NULL);
 	while (*str)
 	{
 		while (c == *str && *str)
 			str++;
+		if (*str == '\0')
+			break;
 		if (c != *str && *str)
 		{
 			tab[n] = malloc(sizeof(char) * (comptelettre(str, c) + 1));
@@ -65,5 +61,22 @@ char **ft_split(char const *s, char c)
 		tab[n++][i] = '\0';
 	}
 	tab[n] = NULL;
+	return (tab);
+}
+
+char **ft_split(char const *s, char c)
+{
+	char	**tab;
+	char *str;
+
+	if (!s)
+		return (NULL);
+	str = (char *)s;
+	tab = malloc(sizeof(char *) * (comptemot(str, c) + 1));
+	if (!tab)
+		return (NULL);
+	tab = writetab(tab, str, c);
+	if (!tab)
+		return (NULL);
 	return (tab);
 }
