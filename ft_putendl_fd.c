@@ -6,7 +6,7 @@
 /*   By: cfelix <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 16:23:49 by cfelix            #+#    #+#             */
-/*   Updated: 2022/11/22 16:24:44 by cfelix           ###   ########.fr       */
+/*   Updated: 2022/12/06 17:44:47 by cfelix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 void	ft_putendl_fd(char *s, int fd)
 {
 	if (!s)
-		return;
+		return ;
 	while (*s != '\0')
 	{	
 		ft_putchar_fd(*s, fd);

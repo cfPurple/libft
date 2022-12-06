@@ -6,12 +6,11 @@
 /*   By: cfelix <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 16:18:09 by cfelix            #+#    #+#             */
-/*   Updated: 2022/11/22 16:23:03 by cfelix           ###   ########.fr       */
+/*   Updated: 2022/12/06 18:33:46 by cfelix           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <string.h>
 
 void	*ft_calloc(size_t count, size_t size)
 {

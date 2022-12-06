@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cfelix <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/06 17:46:53 by cfelix            #+#    #+#             */
+/*   Updated: 2022/12/06 17:48:35 by cfelix           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 #include "libft.h"
 
@@ -24,7 +36,7 @@ static int	comptemot(char *s, char c)
 
 static int	comptelettre(char *s, char c)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (c != s[i] && s[i])
@@ -34,7 +46,7 @@ static int	comptelettre(char *s, char c)
 	return (i);
 }
 
-static char **writetab(char **tab, char *str, char c)
+static char	**writetab(char **tab, char *str, char c)
 {
 	int		n;
 	int		i;
@@ -45,7 +57,7 @@ static char **writetab(char **tab, char *str, char c)
 		while (c == *str && *str)
 			str++;
 		if (*str == '\0')
-			break;
+			break ;
 		if (c != *str && *str)
 		{
 			tab[n] = malloc(sizeof(char) * (comptelettre(str, c) + 1));
@@ -54,20 +66,17 @@ static char **writetab(char **tab, char *str, char c)
 		}
 		i = 0;
 		while (c != *str && *str)
-		{
-			tab[n][i++] = *str;
-			str++;
-		}
+			tab[n][i++] = *str++;
 		tab[n++][i] = '\0';
 	}
 	tab[n] = NULL;
 	return (tab);
 }
 
-char **ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	char	**tab;
-	char *str;
+	char	*str;
 
 	if (!s)
 		return (NULL);

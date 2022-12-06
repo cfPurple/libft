@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cfelix <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/06 18:03:57 by cfelix            #+#    #+#             */
+/*   Updated: 2022/12/06 18:05:17 by cfelix           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include <stdlib.h>
 
-static int isaset(char const s1, char const *set)
+static int	isaset(char const s1, char const *set)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (set[i])
@@ -15,9 +27,9 @@ static int isaset(char const s1, char const *set)
 	return (0);
 }
 
-static int findstart(char const *s1, char const *set)
+static int	findstart(char const *s1, char const *set)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (s1[i] && isaset(s1[i], set))
@@ -25,9 +37,9 @@ static int findstart(char const *s1, char const *set)
 	return (i);
 }
 
-static int findend(char const *s1, char const *set)
+static int	findend(char const *s1, char const *set)
 {
-	int i;
+	int	i;
 
 	i = ft_strlen(s1) - 1;
 	while (s1[i] && isaset(s1[i], set))
@@ -35,12 +47,12 @@ static int findend(char const *s1, char const *set)
 	return (i);
 }
 
-char *ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	int i;
-	char* tab;
-	int end; 
-	int start;
+	int		i;
+	char	*tab;
+	int		end;
+	int		start;
 
 	i = 0;
 	if (!s1 || !set)
@@ -53,9 +65,7 @@ char *ft_strtrim(char const *s1, char const *set)
 	if (!tab)
 		return (NULL);
 	while (start <= end)
-	{
 			tab[i++] = (char)s1[start++];
-	}
 	tab[i] = '\0';
 	return (tab);
 }

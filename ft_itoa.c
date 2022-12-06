@@ -1,15 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cfelix <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/06 17:25:49 by cfelix            #+#    #+#             */
+/*   Updated: 2022/12/06 17:27:57 by cfelix           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 
-static char *malloctab(int nb)
+static char	*malloctab(int nb)
 {
-	int i;
-	char *tab;
+	int		i;
+	char	*tab;
 
 	i = 1;
 	if (nb < 0)
 	{
 		i++;
-		nb = -nb; 
+		nb = -nb;
 	}
 	while (nb >= 10)
 	{
@@ -21,11 +33,12 @@ static char *malloctab(int nb)
 		return (NULL);
 	return (tab);
 }
-static void lil_itoa(int nb , char **tab)
+
+static void	lil_itoa(int nb, char **tab)
 {
 	long long	div;
 	long long	ni;
-	int i;
+	long long	i;
 
 	i = 0;
 	ni = nb;
@@ -45,9 +58,10 @@ static void lil_itoa(int nb , char **tab)
 	}
 	(*tab)[i] = '\0';
 }
+
 char	*ft_itoa(int nb)
 {
-	char *tab;
+	char	*tab;
 
 	tab = malloctab(nb);
 	if (tab == NULL)
@@ -56,8 +70,8 @@ char	*ft_itoa(int nb)
 	{
 		tab[0] = '0';
 		tab[1] = '\0';
-		return tab;
+		return (tab);
 	}
-	lil_itoa(nb , &tab);
-	return(tab);
+	lil_itoa(nb, &tab);
+	return (tab);
 }
