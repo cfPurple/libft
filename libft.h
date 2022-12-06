@@ -16,7 +16,9 @@
 
 # include <string.h>
 # include <stdlib.h>
-#  define SIZE_MAX                (18446744073709551615UL)
+
+# define SIZE_MAX	(18446744073709551615UL)
+
 typedef struct s_list
 {
 	void			*content;
