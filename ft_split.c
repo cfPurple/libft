@@ -13,7 +13,7 @@
 #include <stdlib.h>
 #include "libft.h"
 
-static int	comptemot(char *s, char c)
+static int	w_count(char *s, char c)
 {
 	int	nbr;
 	int	i;
@@ -34,7 +34,7 @@ static int	comptemot(char *s, char c)
 	return (nbr);
 }
 
-static int	comptelettre(char *s, char c)
+static int	c_count(char *s, char c)
 {
 	int	i;
 
@@ -60,9 +60,9 @@ static char	**writetab(char **tab, char *str, char c)
 			break ;
 		if (c != *str && *str)
 		{
-			tab[n] = malloc(sizeof(char) * (comptelettre(str, c) + 1));
+			tab[n] = malloc(sizeof(char) * (c_count(str, c) + 1));
 			if (!tab[n])
-				return (NULL);
+				return (free(tab), NULL);
 		}
 		i = 0;
 		while (c != *str && *str)
@@ -81,11 +81,14 @@ char	**ft_split(char const *s, char c)
 	if (!s)
 		return (NULL);
 	str = (char *)s;
-	tab = malloc(sizeof(char *) * (comptemot(str, c) + 1));
+	tab = malloc(sizeof(char *) * (w_count(str, c) + 1));
 	if (!tab)
 		return (NULL);
 	tab = writetab(tab, str, c);
 	if (!tab)
+	{
+		free(tab);
 		return (NULL);
+	}
 	return (tab);
 }

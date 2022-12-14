@@ -6,7 +6,7 @@
 #    By: cfelix <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/06 17:07:04 by cfelix            #+#    #+#              #
-#    Updated: 2022/12/06 20:42:42 by cfelix           ###   ########.fr        #
+#    Updated: 2022/12/09 16:54:00 by cfelix           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ SRC = ft_bzero.c \
 	ft_strlcpy.c \
 	ft_strlcat.c \
 	ft_toupper.c \
-	t_tolower.c \
+	ft_tolower.c \
 	ft_strchr.c \
 	ft_strrchr.c \
 	ft_strncmp.c \
@@ -47,7 +47,7 @@ SRC = ft_bzero.c \
 	ft_putstr_fd.c \
 	ft_putendl_fd.c \
 	ft_putnbr_fd.c
-
+	
 SRCB = ft_lstnew.c \
 	ft_lstadd_front.c \
 	ft_lstsize.c \
