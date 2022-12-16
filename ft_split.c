@@ -61,8 +61,8 @@ static char	**writetab(char **tab, char *str, char c)
 		if (c != *str && *str)
 		{
 			tab[n] = malloc(sizeof(char) * (c_count(str, c) + 1));
-			if (!tab[n])
-				return (free(tab), NULL);
+			if (tab[n] == NULL)
+				return (NULL);
 		}
 		i = 0;
 		while (c != *str && *str)
@@ -77,7 +77,9 @@ char	**ft_split(char const *s, char c)
 {
 	char	**tab;
 	char	*str;
+	int n;
 
+	n = 0;
 	if (!s)
 		return (NULL);
 	str = (char *)s;
@@ -85,10 +87,23 @@ char	**ft_split(char const *s, char c)
 	if (!tab)
 		return (NULL);
 	tab = writetab(tab, str, c);
+	i = 0;
 	if (!tab)
 	{
+		while (tab[n])
+		{
+			free(tab[n]);
+			n++;
+		}
 		free(tab);
-		return (NULL);
 	}
 	return (tab);
+}
+
+int main()
+{
+	char c = ' ';
+	char *str = "coucou cest moi fr erv erve ve e";
+	ft_split(str, c);
+	return 0;
 }
